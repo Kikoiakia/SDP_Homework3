@@ -2,6 +2,7 @@
 #include <iostream>
 #include <set>
 #include <string>
+#include <unordered_map>
 
 ///
 /// Represents a multiset of words
@@ -12,6 +13,8 @@
 /// Implement all methods of this class
 /// 
 class WordsMultiset {
+private:
+	std::unordered_map<std::string, size_t> m;
 public:
 	/// Adds times occurences of word to the container
 	///
@@ -31,7 +34,17 @@ public:
 	/// Returns a multiset of all words in the container
 	std::multiset<std::string> words() const;
 
-	// You can add additional members if you need to
+	/// <summary>
+	/// Get all unique words as multiset
+	/// </summary>
+	/// <returns></returns>
+	std::multiset<std::string> getUniqueWords() const;
+
+	/// <summary>
+	/// Input words from istream
+	/// </summary>
+	/// <param name="stream"></param>
+	void getWords(std::istream& stream);
 };
 
 ///
