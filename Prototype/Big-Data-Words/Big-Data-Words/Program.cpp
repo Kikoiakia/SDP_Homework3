@@ -2,53 +2,55 @@
 #include <fstream>
 
 void Program::Run(int argc, char** argv) {
-	
 	if (argc < 3) {
 		std::cout << "Input files not detected. Exiting program.\n";
 		isRunning = false;
 	}
-
 	else {
 		std::string line;
 		std::ifstream file1(argv[1]), file2(argv[2]);
 		if (file1.is_open())
 		{
-			std::cout << "Successfully opened the first file. Opening second file.\n";
-			if (file2.is_open())
+			std::cout << "Successfully opened the first file. Getting data.\n";
+			while (!file1.eof())
 			{
-				std::cout << "Successfully opened the second file. Exctracting data.\n";
-				while (!file1.eof() || !file2.eof())
-				{
-					if (!file1.eof()) {
-						std::string* word = new std::string;
-						file1 >> *word;
-						first.add(*word);
-						delete word;
-					}
-					if (!file2.eof()) {
-						std::string* word = new std::string;
-						file2 >> *word;
-						second.add(*word);
-						delete word;
-					}
-				}
-				file1.close();
-				file2.close();
-				std::cout << "Successfully got the data.\n";
+				std::string* word = new std::string;
+				file1 >> *word;
+				first.add(*word);
+				delete word;
+				
 			}
-
-			else {
-				std::cout << "Unable to open second file. Terminating program.\n";
-				isRunning = false;
-			}
+			file1.close();
+			std::cout << "Successfully got the data.\n";
 		}
 
 		else {
 			std::cout << "Unable to open first file. Terminating program.\n";
 			isRunning = false;
-		}	
-	}
+		}
+		
+		if (file2.is_open())
+		{
+			std::cout << "Successfully opened the second file. Getting data.\n";
+			while (!file2.eof())
+			{
+				std::string* word = new std::string;
+				file2 >> *word;
+				second.add(*word);
+				delete word;
+			}
+			file2.close();
+			std::cout << "Successfully got the data.\n";
+		}
 
+
+		else {
+			std::cout << "Unable to open second file. Terminating program.\n";
+			isRunning = false;
+		}
+		
+
+	}
 	if(isRunning) {
 		std::cout << "Data loaded and being processed...\n";
 		size_t wordsSizeFirst = 0, wordsFoundInSecond = 0;

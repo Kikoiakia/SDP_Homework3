@@ -3,13 +3,16 @@
 
 void WordsMultiset::add(const std::string& word, size_t times) {
 	if (times > 0) {
-		size_t val = 1;
-		if (m.get(word,val)) {
-			size_t time = val + times;
-			m.put(word, time);
+		auto search = m.find(word);
+		if (search != m.end()) {
+			size_t time = m[word] + times;
+			m.insert_or_assign(word, time);
 		}
 		else {
-			m.put(word, times);
+			std::pair<std::string, size_t> newItem;
+			newItem.first = word;
+			newItem.second = times;
+			m.insert(newItem);
 		}
 	}		
 	else {
@@ -17,61 +20,54 @@ void WordsMultiset::add(const std::string& word, size_t times) {
 	}
 }
 
-bool WordsMultiset::contains(const std::string& word) const{
-	return m.contains(word);
+bool WordsMultiset::contains(const std::string& word) const {
+	return (m.find(word) != m.end());
 }
 
 size_t WordsMultiset::countOf(const std::string& word) const
 {
 	size_t count = 0;
-	if (m.get(word, count)) return count;
+	if (m.find(word) != m.end()) count = m.at(word);
 	return count;
 }
 
 size_t WordsMultiset::countOfUniqueWords() const
 {
 	size_t num = 0;
-	
-	std::multiset<RBTNode> keyValues = m.getKeysAndValues();
-	num = keyValues.size();
-
-	
+	for (auto kv : m) {
+		//for(size_t i = 0; i < kv.second; i++)
+			num++;
+	}
 	return num;
 }
 
 std::multiset<std::string> WordsMultiset::words() const
 {
-	std::multiset<RBTNode> keyValues = m.getKeysAndValues();
 	std::multiset<std::string> words;
-	for (auto& kv : keyValues) {
-		for (int i = 0; i < kv.getCount(); ++i)
-			words.insert(kv.getData());
+	for (auto kv : m) {
+		for(size_t i = 0; i < kv.second; i++)
+			words.insert(kv.first);
 	}
-	
 	return words;
 }
 
 std::multiset<std::string> WordsMultiset::getUniqueWords() const
 {
-	std::multiset<RBTNode> keyValues = m.getKeysAndValues();
 	std::multiset<std::string> words;
-	for (auto& kv : keyValues) {
-			words.insert(kv.getData());
-	}
-
+	for (auto kv : m) 
+			words.insert(kv.first);
+	
 	return words;
 }
 
 void WordsMultiset::getWords(std::istream& stream) {
 
+	std::string word;
 	if (stream.good())
 	{
-		while (!stream.eof())
+		while (stream >> word)
 		{
-			std::string* word = new std::string;
-			stream >> *word;
-			this->add(*word);
-			delete word;
+			this->add(word);
 		}
 	}
 
@@ -82,24 +78,24 @@ void WordsMultiset::getWords(std::istream& stream) {
 
 ComparisonReport Comparator::compare(std::istream& a, std::istream& b) {
 	WordsMultiset first, second;
-	ComparisonReport* report = new ComparisonReport();
+	ComparisonReport report;
 	first.getWords(a);
 	second.getWords(b);
-	for (auto& a : first.getUniqueWords()) {
+	for (auto& a : first.getUniqueWords()) {		
 		if (second.contains(a)) {
 			size_t count = first.countOf(a);
 			size_t count2 = second.countOf(a);
-			if (count <= count2)
-				for (size_t i = 0; i < count; i++)
-					report->commonWords.add(a);
+			if (count <= count2)   
+				for(size_t i = 0; i < count; i++) 
+					report.commonWords.add(a);
 			else {
-				report->commonWords.add(a, (count - count2));
+				report.commonWords.add(a, (count - count2));
 				count = count - (count - count2);
-				report->uniqueWords[0].add(a, count);
+				report.uniqueWords[0].add(a, count);
 			}
 		}
 		else {
-			report->uniqueWords[0].add(a);
+			report.uniqueWords[0].add(a);
 		}
 	}
 	for (auto& a : second.getUniqueWords()) {
@@ -108,14 +104,14 @@ ComparisonReport Comparator::compare(std::istream& a, std::istream& b) {
 			size_t count2 = first.countOf(a);
 			if (count > count2) {
 				count = count - count2;
-				report->uniqueWords[1].add(a, count);
-			}
+				report.uniqueWords[1].add(a, count);
+			}				
 		}
 		else {
-			report->uniqueWords[1].add(a);
+			report.uniqueWords[1].add(a);
 		}
 	}
-
-	return *report;
+	
+	return report;
 }
 

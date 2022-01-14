@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6c83459b-5e22-461b-b77d-e6810223a85f}</ProjectGuid>
-    <RootNamespace>BigDataWordsTests</RootNamespace>
+    <ProjectGuid>{21c80ec7-10af-4b6a-ad5d-c192b3b8a09b}</ProjectGuid>
+    <RootNamespace>BigDataWords</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -116,8 +116,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Learning\Uni\C++\SDP\Homework3\Big-Data-Words\Big-Data-Words;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>E:\Learning\Uni\C++\SDP\Homework3\Big-Data-Words\Big-Data-Words;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,16 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="catch.hpp" />
     <ClInclude Include="interface.h" />
-    <ClInclude Include="MyHashMap.h" />
-    <ClInclude Include="RBTree.h" />
+    <ClInclude Include="Program.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="interface.cpp" />
-    <ClCompile Include="MyHashMap.cpp" />
-    <ClCompile Include="RBTree.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

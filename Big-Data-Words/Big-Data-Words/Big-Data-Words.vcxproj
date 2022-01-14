@@ -140,12 +140,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="interface.h" />
+    <ClInclude Include="MyHashMap.h" />
     <ClInclude Include="Program.h" />
+    <ClInclude Include="RBTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyHashMap.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="RBTree.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

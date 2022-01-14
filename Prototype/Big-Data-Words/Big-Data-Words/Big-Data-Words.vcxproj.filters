@@ -21,12 +21,6 @@
     <ClInclude Include="Program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyHashMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RBTree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="interface.cpp">
@@ -36,12 +30,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RBTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyHashMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -64,14 +64,12 @@ std::multiset<std::string> WordsMultiset::getUniqueWords() const
 
 void WordsMultiset::getWords(std::istream& stream) {
 
+	std::string word;
 	if (stream.good())
 	{
-		while (!stream.eof())
+		while (stream >> word)
 		{
-			std::string* word = new std::string;
-			stream >> *word;
-			this->add(*word);
-			delete word;
+			this->add(word);
 		}
 	}
 

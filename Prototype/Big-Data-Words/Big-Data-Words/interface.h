@@ -2,7 +2,7 @@
 #include <iostream>
 #include <set>
 #include <string>
-#include "MyHashMap.h"
+#include <unordered_map>
 
 ///
 /// Represents a multiset of words
@@ -14,7 +14,7 @@
 /// 
 class WordsMultiset {
 private:
-	HashMapTrie m = HashMapTrie();
+	std::unordered_map<std::string, size_t> m;
 public:
 	/// Adds times occurences of word to the container
 	///
