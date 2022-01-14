@@ -1,0 +1,10 @@
+File used:
+	file1 : 173 731 KB
+	file2 : 281 156 KB
+Mine:
+	Memory: ~14.4MB
+	Time: ~10:10min
+
+Prototype:
+	Memory: ~6.3MB
+	Time: ~5:50min
