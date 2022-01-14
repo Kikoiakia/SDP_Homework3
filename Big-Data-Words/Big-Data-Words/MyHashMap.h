@@ -1,8 +1,10 @@
 #pragma once
 #include "RBTree.h"
 
+#define HASH_SIZE 1024
+
 struct KeyHash {
-    size_t operator()(const std::string& key, const int& hashSize = 2) const
+    size_t operator()(const std::string& key, const int& hashSize = HASH_SIZE) const
     {
         return std::hash<std::string>() (key) % hashSize;
     }

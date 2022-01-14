@@ -2,6 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>E:\Learning\Uni\C++\SDP\Homework3\file1.txt E:\Learning\Uni\C++\SDP\Homework3\file2.txt</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>E:\Learning\Uni\C++\SDP\Homework3\_file1.txt E:\Learning\Uni\C++\SDP\Homework3\_file2.txt</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

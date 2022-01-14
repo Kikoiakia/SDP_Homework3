@@ -4,6 +4,15 @@ File used:
 Mine:
 	Memory: ~14.4MB
 	Time: ~10:10min
+  test2: (hashSize = 5)
+	Memory: ~6.3MB
+	Time: ~9:30min
+  test3: (hashSize = 2)
+	Memory: ~6.3MB
+	Time: ~10:10min
+  test4: (hashSize = 1024)
+	Memory: ~6.3MB
+	Time: ~6:30min
 
 Prototype:
 	Memory: ~6.3MB

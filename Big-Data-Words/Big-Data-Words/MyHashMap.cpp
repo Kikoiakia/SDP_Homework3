@@ -1,15 +1,17 @@
 #include "MyHashMap.h"
 
+
+
 HashMapTrie::HashMapTrie() {
-    table = new RedBlackTree * [10]();
-    for (int i = 0; i < 10; i++) {
+    table = new RedBlackTree * [HASH_SIZE]();
+    for (int i = 0; i < HASH_SIZE; i++) {
         table[i] = new RedBlackTree();
     }
 
 }
 
 HashMapTrie::~HashMapTrie() {
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < HASH_SIZE; ++i) {
         RedBlackTree* entry = table[i];
         if (entry != nullptr) entry->~RedBlackTree();
         table[i] = nullptr;
